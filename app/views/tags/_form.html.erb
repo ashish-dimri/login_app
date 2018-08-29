@@ -1,0 +1,10 @@
+<div class="page-header"><h1>Add Tag</h1></div>
+<%= form_with model: [ @photo, @photo.tags.build ], local: true do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.submit 'Add Tag' %>
+  </p>
+<% end %>

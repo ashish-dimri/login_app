@@ -1,0 +1,15 @@
+<h1>Edit Album</h1>
+
+<%= form_with scope: :album, url: album_path, method: :PATCH, local: true do |form| %>
+	<div class="form-group">
+		<%= form.label :name %><br>
+		<%= form.text_field :name %>
+	</div>
+
+	<div class="form-group">
+		<%= form.label :description %><br>
+		<%= form.text_area :description %>
+	</div>
+
+	<%= form.submit %>
+<% end %>

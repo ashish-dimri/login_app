@@ -1,0 +1,20 @@
+<div class="page-header"><h1>Uploadaa Photo</h1></div>
+<%= form_with model: [ @album, @album.photos.build ], local: true, html: { multipart: true } do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :image %><br>
+    <%= form.file_field :image %>
+  </div>
+  <%= form.fields_for :tags do |fff| %>
+    <div>
+        <%= fff.label :name , 'Tags' %><br>
+        <%= fff.text_area :name %>
+    </div>
+  <% end %>
+  <div>
+    <%= form.submit 'Upload Photo' %>
+  </div>
+<% end %>

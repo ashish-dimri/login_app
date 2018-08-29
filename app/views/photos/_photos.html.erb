@@ -1,0 +1,15 @@
+<p>
+  <strong>Image:</strong>
+  <%= link_to image_tag(photo.image.url, class: 'media-object'), photo.image.url, target: '_blank' %>
+</p>
+ 
+<p>
+  <strong>Name:</strong>
+  <%= photo.name %>
+</p>
+
+<p>
+  <%#= link_to 'Delete Image', user_album_photo_path(current_user, current_album, photo),
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+</p>

@@ -1,0 +1,51 @@
+<div class="">
+	<strong>Name</strong>
+	<%= @album.name %>
+</div>
+
+<div class="">
+	<strong>Description</strong>
+	<%= @album.description %>
+</div>
+
+<h2>Photos</h2>
+<%#= render @album.photos' %>
+<%# @album.photos.each do |photo| %>
+    <!-- <div class="media-left">
+      <%#= link_to image_tag(photo.image.url, class: 'media-object'), photo.image.url, target: '_blank' %>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading"><%#= photo.name %></h4>
+    </div> -->
+<%# end %>
+
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Image</th>
+		<th>Tags</th>
+		<th>Action</th>
+	</tr>
+	<% @album.photos.each do |photo| %>
+		<tr>
+			<td><%= photo.name %></td>
+			<td><%= link_to image_tag(photo.image.url, class: 'media-object'), photo.image.url, target: '_blank' %></td>
+			<!-- <td><%#= link_to 'Show', user_album_path(current_user, album) %></td>
+			<td><%#= link_to 'Edit', edit_user_album_path(current_user, album) %></td>
+			<td><%#= link_to 'Delete', user_album_path(current_user, album), method: :delete, data: {confirm: 'Are you Sure?'} %></td> -->
+			<td>
+				<% photo.tags.each do |tag| %>
+					<%= tag.name %>,
+				<% end %>
+			</td>
+			<td><%= link_to 'Delete', album_photo_path(@album, photo), method: :delete, data: {confirm: 'Are you Sure?'} %></td>
+		</tr>
+	<% end %>
+	
+</table>
+
+<h2>Add a Image</h2>
+<%= render 'photos/form' %>
+
+<%#= link_to 'Edit', edit_user_album_path(current_user, @album) %>
+<%= link_to 'Back', albums_path %>

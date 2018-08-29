@@ -1,0 +1,36 @@
+<h1>Create Album</h1>
+
+<%= form_for @album do |ff| %>
+	<div class="form-group">
+		<%= ff.label :name %><br>
+		<%= ff.text_field :name %>
+	</div>
+
+	<div class="form-group">
+		<%= ff.label :description %><br>
+		<%= ff.text_area :description %>
+	</div>
+	<%= ff.fields_for :photos do |f| %>
+		<div>
+		    <%= f.label :name %><br>
+		    <%= f.text_field :name %>
+		</div>
+		<div>
+		    <%= f.label :image %><br>
+		    <%= f.file_field :image %>
+		</div>
+
+		<%= f.fields_for :tags do |fff| %>
+			<div>
+			    <%= fff.label :name , 'Tags' %><br>
+			    <%= fff.text_area :name %>
+			</div>
+		<% end %>
+	<% end %>
+
+	<%= ff.submit %>
+<% end %>
+
+
+
+<%#= link_to 'Back', user_albums_path %>
